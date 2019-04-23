@@ -1,5 +1,7 @@
-image: gitpod/workspace-postgres
+image:
+  file: .gitpod.dockerfile
 ports:
 - port: 3000
 tasks:
-- command: bundle install --path vendor/bundle && ./bin/rails s
+- before: bundle install --path vendor/bundle
+- command: ./bin/rails s
