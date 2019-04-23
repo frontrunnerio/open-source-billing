@@ -1,3 +1,7 @@
 FROM gitpod/workspace-postgres
 
-RUN apt-get install libmysqlclient-dev
+USER root
+# Install custom tools, runtime, etc.
+RUN apt-get update && apt-get install -y \
+        libmysqlclient-dev \
+    && apt-get clean && rm -rf /var/cache/apt/* && rm -rf /var/lib/apt/lists/* && rm -rf /tmp/*
